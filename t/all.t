@@ -17,7 +17,7 @@ $l = Log::D.new(:w);
 
 ok $l ~~ Log::D, "constructor test";
 
-
+$l.notify = True;
 
 #$l.enablew = True;
 

@@ -31,6 +31,8 @@ has $.o is rw;
 
 has &.prefix is rw;
 
+has $.notify is rw;
+
 method new($output?,:$e,:$w,:$i,:$d,:$v,:$p)
 {
   self.bless(o=> $output // $*ERR, enablee => $e,enablew => $w,enablei => $i,enabled => $d,enablev => $v, enablep => $p,

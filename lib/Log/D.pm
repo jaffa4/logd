@@ -31,7 +31,7 @@ has $.o is rw;
 
 has &.prefix is rw;
 
-has $.notify;
+has $.notify is rw;
 
 has $.allows;
 
@@ -146,7 +146,7 @@ if $section eq ""
   
   if ($!notify)
   {
-    say $!o: callframe(1).file~" "~callframe(1).line~" d log removes ban on $section\<";
+    say $!o: callframe(1).file~" "~callframe(1).line~" d log removes ban on >$section\<";
   }
 }
 
