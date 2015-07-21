@@ -17,7 +17,7 @@ The prefix of the log message can be given by a prefix function. Default output 
 
     $f.i("reached destructor");
 
-  
+    $f.enable(:v); # let us enable verbose error messages too
 
     $f.allow("engine func"); # if no allow is given, everything is allowed
     $f.i("engine func", "engine starting");
@@ -28,7 +28,7 @@ The prefix of the log message can be given by a prefix function. Default output 
 
     $f.remove_ban("low level func"); # need to be able to remove it
 
-    $f.o = $*OUT;
+    $f.o = $*OUT; # change output of the log
 
     use Log::Empty;
     my $f = Log::Empty.new(:w,:i);   # all logging is off.. useful to replace Log::D with Log::Empty 

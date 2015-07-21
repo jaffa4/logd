@@ -33,6 +33,10 @@ has &.prefix is rw;
 
 has $.notify;
 
+has $.allows;
+
+has $.bans;
+
 method new($output?,:$e,:$w,:$i,:$d,:$v,:$p)
 {
   self.bless(o=> $output // $*ERR, enablee => $e,enablew => $w,enablei => $i,enabled => $d,enablev => $v, enablep => $p,
@@ -46,12 +50,12 @@ method enable(*%e)
   for %e.kv  -> $k,$v {
    given ($k)
    {
-     when "e" {  $!enablee = $v;  $!enablees = $v;}
-     when "w" {  $!enablew = $v;  $!enablews = $v;}
-     when "i" {  $!enablei = $v;  $!enableis = $v;}
-     when "d" {  $!enabled = $v;  $!enableds = $v;}
-     when "v" {  $!enablev = $v;  $!enablevs = $v;}
-     when "p" {  $!enablep = $v;  $!enableps = $v;}  
+     when "e" {  $!enablee = $v;  $!enablees = $v if !$!bans;}
+     when "w" {  $!enablew = $v;  $!enablews = $v if !$!bans;}
+     when "i" {  $!enablei = $v;  $!enableis = $v if !$!bans;}
+     when "d" {  $!enabled = $v;  $!enableds = $v if !$!bans;}
+     when "v" {  $!enablev = $v;  $!enablevs = $v if !$!bans;}
+     when "p" {  $!enablep = $v;  $!enableps = $v if !$!bans;}  
    } 
   }
 }
@@ -66,6 +70,8 @@ method allow($section)
      $!enableds = $!enabled;
      $!enablevs = $!enablev;
      $!enableps = $!enablep;
+     $!allows = True;
+     $!bans = False;
   }
   else
   {
@@ -82,7 +88,8 @@ method allow($section)
 method remove_allow($section)
 {
   if $section eq ""
-  {
+  {  
+     $!allows = False;
   }
   else
   {
@@ -104,6 +111,8 @@ if $section eq ""
      $!enableds =  False;
      $!enablevs =  False;
      $!enableps =  False;
+     $!allows = False;
+     $!bans = True;
   }
   else
   {
@@ -127,6 +136,7 @@ if $section eq ""
      $!enableds = $!enabled;
      $!enablevs = $!enablev;
      $!enableps = $!enablep;
+     $!bans = False;
   }
   else
   {
