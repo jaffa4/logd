@@ -1,7 +1,7 @@
 {
     "name" : "Log::D",
     "version" : "1",
-    "description" : "Supoort for logging",
+    "description" : "Support for logging",
     "provides" : {
         "Log::D" : "lib/Log/D.pm",
         "Log::Empty" : "lib/Log/Empty.pm",
