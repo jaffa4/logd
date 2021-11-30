@@ -7,6 +7,9 @@
         "Log::D" : "lib/Log/D.pm",
         "Log::Empty" : "lib/Log/Empty.pm"
     },
+    "tags" : [
+            "log", "logging", "logger"
+        ],
     "depends" : [ ],
     "source-url" : "git://github.com/jaffa4/logd.git"
 }
